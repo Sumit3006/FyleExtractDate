@@ -4,6 +4,7 @@ import io
 import time
 from regex_date import run_func
 import pytesseract
+ 
 # Lets define the modules that I will be using for the task
 # Function to change the image bytes to text_data
 def change_jpg_to_text(image_name):
