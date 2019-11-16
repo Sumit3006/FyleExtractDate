@@ -4,8 +4,6 @@ import io
 import time
 from regex_date import run_func
 import pytesseract
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-
 # Lets define the modules that I will be using for the task
 # Function to change the image bytes to text_data
 def change_jpg_to_text(image_name):
@@ -39,8 +37,9 @@ from flask import Flask, jsonify, request,render_template
 app = Flask(__name__)
 @app.route('/extract_date',methods=['POST'])
 def predicts():
+    print("predicts")
     if request.method == 'POST':
-       
+        print("post")
         file = request.files['file']
         img_bytes = file.read()
         image = Image.open(io.BytesIO(img_bytes))
@@ -50,7 +49,12 @@ def predicts():
         return jsonify({'Dates Captured': result}) 
 
     else:
+
         return render_template('predict.html')
+@app.route('/')
+def run():
+    print("hello")
+    return render_template('main.html')
 @app.route('/extract_date')
 def runit():
     return render_template('predict.html')
