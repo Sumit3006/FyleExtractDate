@@ -18,6 +18,8 @@ def change_jpg_to_text(image_name):
     time.sleep(3)
     # print(image_name + '.txt')
     output_string = pytesseract.image_to_string(image_name, lang = 'eng')
+    with open("Output.txt", "w") as text_file:
+        text_file.write("{0}".format(output_string))
     return output_string
 
 # FUnction to read the image_text file
@@ -38,19 +40,18 @@ from flask import Flask, jsonify, request,render_template
 app = Flask(__name__)
 @app.route('/extract_date',methods=['POST'])
 def predicts():
-    print("predicts")
     if request.method == 'POST':
-        print("post")
         file = request.files['file']
         img_bytes = file.read()
         image = Image.open(io.BytesIO(img_bytes))
         image.save('newfile', "JPEG")
         text_string = change_jpg_to_text('newfile')
         result = run_func(text_string)
-        return jsonify({'Dates Captured': result}) 
-
+        for _ in result:
+            if _ :
+                return _
+        return "Null"
     else:
-
         return render_template('extract_date.html')
 @app.route('/')
 def run():
@@ -63,4 +64,4 @@ def runit():
     
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

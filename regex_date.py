@@ -13,6 +13,7 @@ def read_file(filename):
 
 
 # input_string = '24/Jun/2019'
+
 def match_type_1(input_string):
     m = re.findall(r"[\d]{1,2}/[\d]{1,2}/[\d]{4}", input_string)
     for s in m:
@@ -50,6 +51,12 @@ def match_type_6(input_string):
     all = re.findall(pattern, input_string)
     for s in all:
         return(s)
+#07-May-2018
+def match_type_8(input_string):
+    all =re.findall(r'\d\d[-]\w\w\w[-]\d\d\d\d', input_string)
+    for s in all:
+        return(s)       
+    
 # print(read_file('output_processed.txt'))
 
 def run_func(input_string):
@@ -61,6 +68,7 @@ def run_func(input_string):
     return_list.append(match_type_5(input_string)) 
     return_list.append(match_type_6(input_string)) 
     return_list.append(match_type_7(input_string)) 
+    return_list.append(match_type_8(input_string)) 
     return return_list
     
     # match_type_2(input_string)
