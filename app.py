@@ -50,14 +50,15 @@ def predicts():
 
     else:
 
-        return render_template('predict.html')
+        return render_template('extract_date.html')
 @app.route('/')
 def run():
     print("hello")
     return render_template('main.html')
 @app.route('/extract_date')
 def runit():
-    return render_template('predict.html')
+    print("bye")
+    return render_template('extract_date.html')
     
 
 if __name__ == "__main__":
