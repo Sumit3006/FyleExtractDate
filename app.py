@@ -48,8 +48,12 @@ def predicts():
         image.save('newfile', "JPEG")
         text_string = change_jpg_to_text('newfile')
         result = run_func(text_string)
-        res="Date extracted(YYYY-MM-DD) : "
-        return jsonify("Dates extracted : {0}",result)
+        final=["NULL"]
+        for _ in result:
+            if _ :
+                final[0]=_
+                break
+        return jsonify("Date extracted(YYYY-MM-DD) : ",final)
     else:
         return render_template('extract_date.html')
 @app.route('/')

@@ -150,7 +150,7 @@ def match_type_8(input_string):
         elif(re.findall(r'[dD][Ee][cC]',mon)):
             act_mon="12"
         if act_mon=="00":
-            return "Null"    
+            return 
         p=[1,2,3]
         p[0]=l[2]
         p[1]=act_mon
@@ -203,7 +203,7 @@ def match_type_8a(input_string):
         elif(re.findall(r'[dD][Ee][cC]',mon)):
             act_mon="12"
         if act_mon=="00":
-            return "Null"    
+            return     
         p=[1,2,3]
         p[0]=year
         p[1]=act_mon
@@ -255,7 +255,7 @@ def match_type_9(input_string):
         elif(re.findall(r'[dD][Ee][cC]',mon)):
             act_mon="12"
         if act_mon=="00":
-            return "Null"    
+            return    
         p=[1,2,3]
         p[0]=year
         p[1]=act_mon
@@ -301,7 +301,7 @@ def match_type_10(input_string):
         elif(re.findall(r'[dD][Ee][cC]',mon)):
             act_mon="12"
         if act_mon=="00":
-            return "Null"    
+            return 
         p=[1,2,3]
         p[0]=year
         p[1]=act_mon
@@ -349,7 +349,7 @@ def match_type_11(input_string):
         elif(re.findall(r'[dD][Ee][cC]',mon)):
             act_mon="12"
         if act_mon=="00":
-            return "Null"    
+            return   
         p=[1,2,3]
         p[0]=year
         p[1]=act_mon
