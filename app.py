@@ -15,7 +15,6 @@ def change_jpg_to_text(image_name):
     # time.sleep(1)
     # Lets read that file up
     # f = open('{}'.format(image_name + '.txt'), 'r')
-    time.sleep(3)
     # print(image_name + '.txt')
     output_string = pytesseract.image_to_string(image_name, lang = 'eng')
     with open("Output.txt", "w") as text_file:
@@ -47,19 +46,18 @@ def predicts():
         image.save('newfile', "JPEG")
         text_string = change_jpg_to_text('newfile')
         result = run_func(text_string)
+        res="Date extracted(YYYY-MM-DD) : "
         for _ in result:
             if _ :
-                return _
-        return "Null"
+                return res + _
+        return res+"Null"
     else:
         return render_template('extract_date.html')
 @app.route('/')
 def run():
-    print("hello")
     return render_template('main.html')
 @app.route('/extract_date')
 def runit():
-    print("bye")
     return render_template('extract_date.html')
     
 
