@@ -39,7 +39,9 @@ from flask import Flask, jsonify, request,render_template
 app = Flask(__name__)
 @app.route('/extract_date',methods=['POST'])
 def predicts():
+    print("here")
     if request.method == 'POST':
+        print("post")
         file = request.files['file']
         img_bytes = file.read()
         image = Image.open(io.BytesIO(img_bytes))
@@ -47,10 +49,7 @@ def predicts():
         text_string = change_jpg_to_text('newfile')
         result = run_func(text_string)
         res="Date extracted(YYYY-MM-DD) : "
-        for _ in result:
-            if _ :
-                return res + _
-        return res+"Null"
+        return jsonify("Dates extracted : {0}",result)
     else:
         return render_template('extract_date.html')
 @app.route('/')
